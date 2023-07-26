@@ -16,19 +16,19 @@ const Home = () => {
                 </div>
                 <div className="flex flex-row m-20 justify-between">
                     <div className="relative">
-                        <Link to={'/list'}>
+                        <Link to={'/content'}>
                         <img src="src/img/bar.png" alt="bar" />
                         <p className="absolute text-6xl font-extralight text-white top-[45%] left-[33%]">BAR</p>
                         </Link>
                     </div>
                     <div className="relative">
-                        <Link to={'/list'}>
+                        <Link to={'/content'}>
                         <img src="src/img/brewer.png" alt="brewer" />
                         <p className="absolute text-6xl font-extralight text-white top-[45%] left-[15%]">BREWER</p>
                         </Link>
                     </div>
                     <div className="relative">
-                        <Link to={'/list'}> 
+                        <Link to={'/content'}> 
                         <img src="src/img/product.png" alt="product" />
                         <p className="absolute text-6xl font-extralight text-white top-[45%] left-[10%]">PRODUCT</p>
                         </Link>
