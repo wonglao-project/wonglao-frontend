@@ -1,6 +1,8 @@
 import {Link} from 'react-router-dom'
+import { useAuth } from '../providers/AuthProvider'
 
 const Navbar = () => {
+    const { isLoggedIn, logout } = useAuth()
 
     return (
         <nav className="sticky bg-opacity-30 backdrop-blur-lg backdrop-filter">
@@ -11,11 +13,24 @@ const Navbar = () => {
             </p>
             </Link>
             <div className="flex gap-8">
-                  <p>Login</p>
-                  <p>Register</p>
+            {isLoggedIn ? (
+        <button onClick={logout}>
+          Log out
+        </button>
+      ) : (
+        <>
+                <Link to={'/user/login'}>
+                    <p>Login</p>
+                </Link>
+                <Link to={'/user/register'}>
+                    <p>Register</p>
+                </Link>
+                </>
+         )}          
                   <Link to={'/map'}>
                     <p>Map</p>
                   </Link>
+     
             </div>
           </div>
         </nav>

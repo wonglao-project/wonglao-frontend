@@ -1,4 +1,33 @@
 import {Link} from 'react-router-dom'
+import MapComp from '../components/MapComp'
+
+interface IMenu {
+    href: string
+    text: string
+    imgSrc: string
+    customClassname?: string
+}
+
+const menu: IMenu[] = [
+    {
+        href: '/content',
+        text: "BAR",
+        imgSrc: 'src/img/bar.png',
+        customClassname: 'left-[33%]'
+    },
+    {
+        href: '/content',
+        text: "BREWER",
+        imgSrc: 'src/img/brewer.png',
+        customClassname: 'left-[15%]'
+    },
+    {
+        href: '/content',
+        text: "PRODUCT",
+        imgSrc: 'src/img/product.png',
+        customClassname: 'left-[10%]'
+    },
+]
 
 const Home = () => {
     return (
@@ -8,31 +37,25 @@ const Home = () => {
             </header>
             <main>
                 <div className="flex flex-row">
-                    <img className="m-20 max-w-[1000%]" src="src/img/map.png" alt="map" />       
-                    <div className="m-20 max-w-[50%]">
+                    <div className='m-20 w-[50%] h-[500px]'>
+                        <MapComp />
+                    </div>       
+                    <div className="m-20 w-[50%]">
                         <h3>INFO</h3>
                         <p className="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam reprehenderit quisquam doloribus repellendus fugit sapiente esse necessitatibus, nihil voluptate quod aspernatur quos sint optio, consequuntur quia dignissimos aperiam nostrum veritatis?</p>
                     </div>
                 </div>
                 <div className="flex flex-row m-20 justify-between">
-                    <div className="relative">
-                        <Link to={'/list'}>
-                        <img src="src/img/bar.png" alt="bar" />
-                        <p className="absolute text-6xl font-extralight text-white top-[45%] left-[33%]">BAR</p>
-                        </Link>
-                    </div>
-                    <div className="relative">
-                        <Link to={'/list'}>
-                        <img src="src/img/brewer.png" alt="brewer" />
-                        <p className="absolute text-6xl font-extralight text-white top-[45%] left-[15%]">BREWER</p>
-                        </Link>
-                    </div>
-                    <div className="relative">
-                        <Link to={'/list'}> 
-                        <img src="src/img/product.png" alt="product" />
-                        <p className="absolute text-6xl font-extralight text-white top-[45%] left-[10%]">PRODUCT</p>
-                        </Link>
-                    </div>
+                    {
+                        menu.map(({href, imgSrc, text, customClassname}) => (
+                        <div className="relative">
+                            <Link to={href}>
+                                <img src={imgSrc} alt="bar" />
+                                <p className={`absolute text-6xl font-extralight text-white top-[45%] ${customClassname ?? ''}`}>{text}</p>
+                            </Link>
+                        </div>
+                        ))
+                    }
                     
                 </div>
             </main>

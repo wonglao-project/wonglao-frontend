@@ -1,6 +1,9 @@
+import ContentList from "../components/ContentList"
+
 const List = () => {
     return (
-        <div>
+        
+        <>
             <div className="flex flex-row mx-20 border-b border-[#797979]/40">
                 <p className="p-5">BAR</p>
                 <p className="p-5">BREWER</p>
@@ -19,12 +22,12 @@ const List = () => {
                     <img src="src/img/list-product.png" alt="product list" />
                     <img src="src/img/list-product.png" alt="product list" />
                     <img src="src/img/list-product.png" alt="product list" />
-                    <img src="src/img/list-product.png" alt="product list" />
-                    <img src="src/img/list-product.png" alt="product list" />
-                    <img src="src/img/list-product.png" alt="product list" />
-                </div>
-            </div>
-        </div>
+                    
+                </div> 
+                
+            </div> 
+            <ContentList />
+        </>
     )
 }
 
