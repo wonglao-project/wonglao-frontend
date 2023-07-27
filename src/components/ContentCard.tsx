@@ -10,12 +10,12 @@ const ContentCard = ({ content }: ContentCardProps) => {
     <Link to={`/content/${content.id}`} className="flex flex-col bg-gray-100 rounded-xl shadow-lg overflow-hidden">
       {/* <img src={content.thumbnailUrl} className="w-full aspect-video object-cover" /> */}
       <div className="flex flex-col gap-4 p-4 justify-between h-full">
-        <div className="flex flex-col gap-2">
-          <p className="font-semibold text-md text-gray-500">{content.place_name}</p>
-          <p className="text-gray-500">{content.operating_time}</p>
-          <p className="text-gray-500 italic">{content.description}</p>
-        </div>
-        <p className="text-md text-gray-500">{content.tel}</p>
+          <p>{content.place_name}</p>
+          <p>{content.operating_time}</p>
+          <p>{content.description}</p>
+          <p>{content.address}</p>
+          <p>{content.tel}</p>
+          <p>{content.email}</p>
       </div>
     </Link>
   )

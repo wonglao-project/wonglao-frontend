@@ -8,6 +8,7 @@ import Create from './pages/Create'
 import Login from './pages/Login'
 import Register from './pages/Register'
 
+
 function App() {
 
   return (
@@ -15,7 +16,7 @@ function App() {
     <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/info" element={<Info />} />
+      <Route path="/content/:id" element={<Info />} />
       <Route path="/content" element={<List />} />
       <Route path="/map" element={<Map />} />
       <Route path="/create" element={<Create />} />

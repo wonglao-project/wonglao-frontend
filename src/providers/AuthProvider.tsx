@@ -22,7 +22,11 @@ export const useAuth = () => {
 const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')
 
-const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+interface IAuthProviderProps {
+  children: React.ReactNode
+}
+
+const AuthProvider = ({ children }: IAuthProviderProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!token)
   const [username, setUsername] = useState<string | null>(user)
 
@@ -35,6 +39,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginInfo),
       })
+      //better way to check http status code is from HTTP protocol directly as follow,
+      // if(res.status > 400)
+      //   throw new Error(res.statusText)
+
       const data = await res.json()
 
       if (data.statusCode === 401) {

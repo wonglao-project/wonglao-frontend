@@ -1,6 +1,3 @@
-import React from 'react'
-
-
 const Create = () => {
   return (
     <div className="py-12 flex flex-col items-center">

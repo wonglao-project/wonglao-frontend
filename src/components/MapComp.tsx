@@ -7,29 +7,34 @@ type MapOptions = google.maps.MapOptions
 const markers = [
     {
       id: 1,
-      name: "Chicago, Illinois",
-      position: { lat: 41.881832, lng: -87.623177 }
+      name: "Surin",
+      position: { lat: 14.882905, lng: 103.49371070000007 }
     },
     {
       id: 2,
-      name: "Denver, Colorado",
-      position: { lat: 39.739235, lng: -104.99025 }
+      name: "Phuket",
+      position: { lat: 7.9810496, lng: 98.36388239999997 }
     },
     {
       id: 3,
-      name: "Los Angeles, California",
-      position: { lat: 34.052235, lng: -118.243683 }
+      name: "Chaingmai",
+      position: { lat: 18.7877477, lng: 98.99313110000003 }
     },
     {
       id: 4,
-      name: "New York, New York",
-      position: { lat: 40.712776, lng: -74.005974 }
+      name: "Nonthaburi",
+      position: { lat: 13.8621125, lng: 100.51435279999998 }
+    },
+    {
+      id: 5,
+      name: "Bangkok",
+      position: { lat: 13.75398, lng: 100.50144 }
     }
   ];
 
 const MapComp = () => {
     // const mapRef = useRef<GoogleMap>();
-    const center = useMemo<LatLngLiteral>(() => ({lat: 44, lng: -80}), [])
+    const center = useMemo<LatLngLiteral>(() => ({lat: 13.75398, lng: 100.50144}), [])
     const options = useMemo<MapOptions>(() => ({
         mapId: "7e546cc0ad90f3cc",
         disableDefaultUI: true,
@@ -37,9 +42,9 @@ const MapComp = () => {
     }), [])
     // const onLoad = useCallback((map) => (mapRef.current = map), [])
 
-    const [activeMarker, setActiveMarker] = useState(null);
+    const [activeMarker, setActiveMarker] = useState<number | null>(null);
 
-  const handleActiveMarker = (marker) => {
+  const handleActiveMarker = (marker: number) => {
     if (marker === activeMarker) {
       return;
     }
@@ -53,16 +58,16 @@ const MapComp = () => {
 //   };
 
   return (
-    <div className='flex h-[100vh]'>
-        <div className='w-[20%] p-[1rem] bg-[#f6f6fc]'>
-            <h1>Places</h1>
-        </div>
-        <div className='w-[80%] h-[100vh]'>
+    // <div className='flex h-[100vh]'>
+    //     <div className='w-[20%] p-[1rem] bg-[#f6f6fc]'>
+    //         <h1>Places</h1>
+    //     </div>
+    //     <div className='w-[80%] h-[100vh]'>
         <GoogleMap 
             onClick={() => setActiveMarker(null)}
-            zoom={10} 
+            zoom={6} 
             center={center} 
-            mapContainerClassName='w-[100%] h-[100vh]'
+            mapContainerClassName='w-[100%] h-[100%]'
             options={options}
             // OnLoad={handleOnLoad}
         >
@@ -81,8 +86,8 @@ const MapComp = () => {
                 </MarkerF>
             ))}
         </GoogleMap>
-        </div>
-    </div>
+    //     </div>
+    // </div>
   )
 }
 
