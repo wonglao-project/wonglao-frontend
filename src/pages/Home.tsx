@@ -48,12 +48,12 @@ const Home = () => {
                 <div className="flex flex-row m-20 justify-between">
                     {
                         menu.map(({href, imgSrc, text, customClassname}) => (
-                        <div className="relative">
-                            <Link to={href}>
-                                <img src={imgSrc} alt="bar" />
-                                <p className={`absolute text-6xl font-extralight text-white top-[45%] ${customClassname ?? ''}`}>{text}</p>
-                            </Link>
-                        </div>
+                            <div key={imgSrc} className="relative">
+                                <Link to={href}>
+                                    <img src={imgSrc} alt="bar" />
+                                    <p className={`absolute text-6xl font-extralight text-white top-[45%] ${customClassname ?? ''}`}>{text}</p>
+                                </Link>
+                            </div>
                         ))
                     }
                     

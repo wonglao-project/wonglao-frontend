@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState } from 'react'
-import { GoogleMap, MarkerF, InfoWindowF } from "@react-google-maps/api"
+import { useMemo, useRef, useState, useCallback } from 'react'
+import { GoogleMap, MarkerF, InfoWindowF, useLoadScript } from "@react-google-maps/api"
 
 type LatLngLiteral = google.maps.LatLngLiteral
 type MapOptions = google.maps.MapOptions
@@ -33,16 +33,21 @@ const markers = [
   ];
 
 const MapComp = () => {
-    // const mapRef = useRef<GoogleMap>();
+    const mapRef = useRef<google.maps.Map>();
     const center = useMemo<LatLngLiteral>(() => ({lat: 13.75398, lng: 100.50144}), [])
     const options = useMemo<MapOptions>(() => ({
         mapId: "7e546cc0ad90f3cc",
         disableDefaultUI: true,
         clickableIcons: false
     }), [])
-    // const onLoad = useCallback((map) => (mapRef.current = map), [])
+    const onLoad = useCallback((map: google.maps.Map) => {mapRef.current = map}, [])
 
     const [activeMarker, setActiveMarker] = useState<number | null>(null);
+
+    const { isLoaded } = useLoadScript({
+      googleMapsApiKey: import.meta.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+    })
+
 
   const handleActiveMarker = (marker: number) => {
     if (marker === activeMarker) {
@@ -51,25 +56,23 @@ const MapComp = () => {
     setActiveMarker(marker);
   };
 
-//   const handleOnLoad = (map) => {
-//     const bounds = new google.maps.LatLngBounds();
-//     markers.forEach(({ position }) => bounds.extend(position));
-//     map.fitBounds(bounds);
-//   };
+  // const handleOnLoad = (map: google.maps.Map) => {
+  //   const bounds = new google.maps.LatLngBounds();
+  //   markers.forEach(({ position }) => bounds.extend(position));
+  //   map.fitBounds(bounds);
+  // };
+
+  if (!isLoaded) return <div>Loading...</div>
+
 
   return (
-    // <div className='flex h-[100vh]'>
-    //     <div className='w-[20%] p-[1rem] bg-[#f6f6fc]'>
-    //         <h1>Places</h1>
-    //     </div>
-    //     <div className='w-[80%] h-[100vh]'>
         <GoogleMap 
             onClick={() => setActiveMarker(null)}
             zoom={6} 
             center={center} 
             mapContainerClassName='w-[100%] h-[100%]'
             options={options}
-            // OnLoad={handleOnLoad}
+            onLoad={onLoad}
         >
             {markers.map(({ id, name, position }) => (
                 <MarkerF
@@ -86,8 +89,6 @@ const MapComp = () => {
                 </MarkerF>
             ))}
         </GoogleMap>
-    //     </div>
-    // </div>
   )
 }
 

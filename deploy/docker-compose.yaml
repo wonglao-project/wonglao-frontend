@@ -1,0 +1,11 @@
+services:
+  app:
+    # Build image nodeserver from Dockerfile in GitHub repo
+    image: wonglao-frontend
+    build:
+      context: https://github.com/wonglao-project/wonglao-frontend.git#develop
+      args:
+        FROM_REPO: https://github.com/wonglao-project/wonglao-frontend
+        APP_VERSION: compose-develop
+    ports:
+      - "8000:8000"

@@ -16,6 +16,7 @@ const ContentCard = ({ content }: ContentCardProps) => {
           <p>{content.address}</p>
           <p>{content.tel}</p>
           <p>{content.email}</p>
+          <p>{content.category}</p>
       </div>
     </Link>
   )

@@ -1,6 +1,6 @@
 import ContentList from "../components/ContentList"
 
-const List = () => {
+const Content = () => {
     return (
         
         <>
@@ -31,4 +31,4 @@ const List = () => {
     )
 }
 
-export default List
+export default Content

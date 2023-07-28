@@ -9,6 +9,6 @@ export interface ContentDto {
     address: string;
     tel: string;
     email: string;
-    // category: PrismaSellerCategory;
+    category: string;
     // images: string[];
 }

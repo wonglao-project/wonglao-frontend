@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import useList from '../hooks/useContentList'
+import useContentList from '../hooks/useContentList'
 import { useAuth } from '../providers/AuthProvider'
 import ContentCard from './ContentCard'
 
 const ContentList = () => {
   const { isLoggedIn } = useAuth()
-  const { contentList, isLoading, error } = useList()
+  const { contentList, isLoading, error } = useContentList()
 
   if (isLoading) return <p>Loading...</p>
 
