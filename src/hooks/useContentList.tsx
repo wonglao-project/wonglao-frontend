@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { ContentDto } from '../types/types'
-import { host } from '../constant/host'
+import { useEffect, useState } from "react"
+import { ContentDto } from "../types/types"
+import { host } from "../constant/host"
 
 const useContentList = () => {
   const [contentList, setContentList] = useState<ContentDto[] | null>(null)
