@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { useMemo, useRef, useState, useCallback } from "react"
 import {
   GoogleMap,
@@ -5,9 +6,13 @@ import {
   InfoWindowF,
   useLoadScript,
 } from "@react-google-maps/api"
+=======
+import { useCallback, useMemo, useRef } from "react";
+import { GoogleMap, Marker } from "@react-google-maps/api";
+>>>>>>> Stashed changes
 
-type LatLngLiteral = google.maps.LatLngLiteral
-type MapOptions = google.maps.MapOptions
+type LatLngLiteral = google.maps.LatLngLiteral;
+type MapOptions = google.maps.MapOptions;
 
 const markers = [
   {
@@ -38,11 +43,16 @@ const markers = [
 ]
 
 const MapComp = () => {
+<<<<<<< Updated upstream
   const mapRef = useRef<google.maps.Map>()
   const center = useMemo<LatLngLiteral>(
     () => ({ lat: 13.75398, lng: 100.50144 }),
     []
   )
+=======
+  const mapRef = useRef<google.maps.Map>();
+  const center = useMemo<LatLngLiteral>(() => ({ lat: 44, lng: -80 }), []);
+>>>>>>> Stashed changes
   const options = useMemo<MapOptions>(
     () => ({
       mapId: "7e546cc0ad90f3cc",
@@ -50,6 +60,7 @@ const MapComp = () => {
       clickableIcons: false,
     }),
     []
+<<<<<<< Updated upstream
   )
   const onLoad = useCallback((map: google.maps.Map) => {
     mapRef.current = map
@@ -107,3 +118,31 @@ const MapComp = () => {
 }
 
 export default MapComp
+=======
+  );
+  const onLoad = useCallback((map: google.maps.Map) => {
+    mapRef.current = map;
+  }, []);
+
+  return (
+    <div className="flex h-[100vh]">
+      <div className="w-[20%] p-[1rem] bg-[#14161a]">
+        <h1>Places</h1>
+      </div>
+      <div className="w-[80%] h-[100vh]">
+        <GoogleMap
+          zoom={10}
+          center={center}
+          mapContainerClassName="w-[100%] h-[100vh]"
+          options={options}
+          onLoad={onLoad}
+        >
+          <Marker position={{ lat: 44, lng: -80 }} />
+        </GoogleMap>
+      </div>
+    </div>
+  );
+};
+
+export default MapComp;
+>>>>>>> Stashed changes
