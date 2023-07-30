@@ -42,14 +42,13 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
       //better way to check http status code is from HTTP protocol directly as follow,
       // if(res.status > 400)
       //   throw new Error(res.statusText)
+      if (res.status >= 400) {
+        throw new Error(res.statusText)
+      }
 
       const data = await res.json()
 
-      if (data.statusCode === 401) {
-        throw new Error(data.message)
-      }
-
-      localStorage.setItem("token", data.accessToken)
+      localStorage.setItem("token", data.token)
       localStorage.setItem("user", username)
       setIsLoggedIn(true)
       setUsername(username)
@@ -67,10 +66,9 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(registerBody),
       })
-      const data = await res.json()
 
-      if (data.statusCode && data.statusCode !== 201) {
-        throw new Error(data.message)
+      if (res.status >= 400) {
+        throw new Error(res.statusText)
       }
     } catch (err: any) {
       throw new Error(err.message)

@@ -19,7 +19,23 @@ export enum EnumSellerCategory {
   PRODUCT = "Product",
 }
 
-export type SellerCategory =
-  | EnumSellerCategory.BAR
-  | EnumSellerCategory.BREWER
-  | EnumSellerCategory.PRODUCT
+export type SellerCategory = EnumSellerCategory
+
+export interface SearchPlaceDetails {
+  place_name: string
+}
+
+export interface PlaceDetails extends SearchPlaceDetails {
+  weekday_text: string[]
+  latitude: number
+  longitude: number
+  address: string
+}
+
+export interface CreatePlaceDetails extends PlaceDetails {
+  tel: string
+  email: string
+  description: string
+  category: EnumSellerCategory.BAR | EnumSellerCategory.BREWER
+  images: string[]
+}

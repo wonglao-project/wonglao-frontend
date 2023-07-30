@@ -1,4 +1,10 @@
+import { useState } from "react"
+import ContentIntro from "../components/ContentIntro"
+import { ContentDto } from "../types/types"
+
 const Info = () => {
+  const [intro, setIntro] = useState<ContentDto[] | null>(null)
+
   return (
     <div>
       <header className='relative'>
@@ -19,24 +25,17 @@ const Info = () => {
           <div className='m-20 max-w-[50%]'>
             <h3>INFO</h3>
             <p className='mt-5'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laboriosam reprehenderit quisquam doloribus repellendus fugit
-              sapiente esse necessitatibus, nihil voluptate quod aspernatur quos
-              sint optio, consequuntur quia dignissimos aperiam nostrum
-              veritatis?
+              {intro &&
+                intro.map((content) => (
+                  <ContentIntro key={content.id} content={content} />
+                ))}
             </p>
           </div>
         </div>
         <div className='flex flex-row'>
           <div className='m-20 max-w-[50%]'>
             <h3>INFO</h3>
-            <p className='mt-5'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laboriosam reprehenderit quisquam doloribus repellendus fugit
-              sapiente esse necessitatibus, nihil voluptate quod aspernatur quos
-              sint optio, consequuntur quia dignissimos aperiam nostrum
-              veritatis?
-            </p>
+            <div className='mt-5'></div>
           </div>
           <img
             className='m-20 max-w-[50%]'
