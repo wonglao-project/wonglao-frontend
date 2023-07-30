@@ -1,24 +1,16 @@
-import { useLoadScript} from '@react-google-maps/api'
-import MapComp from '../components/MapComp'
+import MapComp from "../components/MapComp"
 
 const Map = () => {
-    const { isLoaded } = useLoadScript({
-        googleMapsApiKey: import.meta.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
-    })
-
-    if (!isLoaded) return <div>Loading...</div>
-    return (
-        <div className='flex h-[100vh]'>
-        <div className='w-[20%] p-[1rem] bg-[#f6f6fc]'>
-            <h1>Places</h1>
-        </div>
-        <div className='w-[80%] h-[100vh]'>
-            <MapComp />
-        </div>
-        </div>
-    )
+  return (
+    <div className='flex h-[100vh]'>
+      <div className='w-[20%] p-[1rem] bg-[#f6f6fc]'>
+        <h1>Places</h1>
+      </div>
+      <div className='w-[80%] h-[100vh]'>
+        <MapComp />
+      </div>
+    </div>
+  )
 }
-
-
 
 export default Map
