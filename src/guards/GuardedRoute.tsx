@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from "react-router-dom"
 
 interface IGuardedRouteProps {
   isRouteAccessible: boolean
@@ -8,7 +8,11 @@ interface IGuardedRouteProps {
 const GuardedRoute = (props: IGuardedRouteProps) => {
   const { isRouteAccessible, redirectRoute } = props
 
-  return isRouteAccessible ? <Outlet /> : <Navigate to={redirectRoute} replace />
+  return isRouteAccessible ? (
+    <Outlet />
+  ) : (
+    <Navigate to={redirectRoute} replace />
+  )
 }
 
 export default GuardedRoute
