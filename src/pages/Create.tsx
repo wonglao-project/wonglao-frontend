@@ -4,7 +4,7 @@ import { WebApiService } from "../services/WebApi"
 import { CreatePlaceDetails, EnumSellerCategory } from "../types/types"
 
 const Create = () => {
-  const { fetchData, placeDetails, setPlaceDetails, error } = usePlaceDetails()
+  const { fetchData, placeDetails, setPlaceDetails } = usePlaceDetails()
 
   const [isSubmitPlaceName, setSubmitPlaceName] = useState<boolean>(false)
   const [placeName, setPlaceName] = useState<string>("")

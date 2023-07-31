@@ -32,60 +32,74 @@ const menu: IMenu[] = [
 
 const Home = () => {
   return (
-    <div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1.5 }}
+    <>
+      <div
+        className="h-screen"
+        data-aos="fade-up"
+        data-aos-offset={100}
+        data-aos-duration="1500"
       >
-        <header>
-          <img src="/img/banner.png" alt="banner" />
-        </header>
-      </motion.div>
-
-      <main>
-        <motion.div>
-          <div className="flex flex-row sticky">
-            <div className="m-20 w-[50%] h-[500px]">
-              <MapComp />
-            </div>
-            <div className="m-20 w-[50%]">
-              <h3>INFO</h3>
-              <p className="mt-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laboriosam reprehenderit quisquam doloribus repellendus fugit
-                sapiente esse necessitatibus, nihil voluptate quod aspernatur
-                quos sint optio, consequuntur quia dignissimos aperiam nostrum
-                veritatis?
-              </p>
-            </div>
+        <img
+          className="object-cover w-full h-full"
+          src="/img/banner.png"
+          alt="banner"
+        />
+      </div>
+      <main className="h-auto">
+        <div
+          className="flex flex-row h-screen"
+          data-aos="fade-up"
+          data-aos-offset={200}
+          data-aos-duration="1500"
+        >
+          <div className="m-20 w-[50%] h-[500px]">
+            <MapComp />
           </div>
-        </motion.div>
-
-        <motion.div>
-          <div className="flex flex-row m-20 justify-between">
-            {menu.map(({ href, imgSrc, text, customClassname }) => (
-              <div key={imgSrc} className="relative">
-                <Link to={href}>
-                  <img src={imgSrc} alt="bar" />
-                  <p
-                    className={`absolute text-6xl font-extralight text-white top-[45%] ${
-                      customClassname ?? ""
-                    }`}
-                  >
-                    {text}
-                  </p>
-                </Link>
-              </div>
-            ))}
+          <div className="m-20 w-[50%]">
+            <h3>INFO</h3>
+            <p className="mt-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laboriosam reprehenderit quisquam doloribus repellendus fugit
+              sapiente esse necessitatibus, nihil voluptate quod aspernatur quos
+              sint optio, consequuntur quia dignissimos aperiam nostrum
+              veritatis?
+            </p>
           </div>
-        </motion.div>
+        </div>
+        <div
+          className="flex flex-row m-20 justify-between h-screen"
+          data-aos="fade-up"
+          data-aos-offset={400}
+          data-aos-duration="1500"
+        >
+          {menu.map(({ href, imgSrc, text, customClassname }) => (
+            <div key={imgSrc} className="h-[350px] w-[350px]">
+              <Link
+                className="relative w-full h-full flex justify-center items-center"
+                to={href}
+              >
+                <p
+                  className={`text-6xl font-extralight text-white ${
+                    customClassname ?? ""
+                  }`}
+                >
+                  {text}
+                </p>
+                <img
+                  src={imgSrc}
+                  className="absolute top-0 left-0 -z-10"
+                  alt="bar"
+                />
+              </Link>
+            </div>
+          ))}
+          </div> 
       </main>
 
       <footer>
         <p>FOOTER</p>
       </footer>
-    </div>
+    </>
   );
 };
 

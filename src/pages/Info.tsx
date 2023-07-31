@@ -1,9 +1,13 @@
-import { useState } from "react"
-import ContentIntro from "../components/ContentIntro"
-import { ContentDto } from "../types/types"
+import useContent from "../hooks/useContent"
+import { useParams } from "react-router-dom"
 
 const Info = () => {
-  const [intro, setIntro] = useState<ContentDto[] | null>(null)
+  const { id } = useParams()
+  const { content, isLoading, error } = useContent(id || "1")
+
+  if (isLoading || !content) return <p>Loading...</p>
+
+  if (error) return <p className='text-center text-red-500'>{error}</p>
 
   return (
     <div>
@@ -24,18 +28,15 @@ const Info = () => {
           />
           <div className='m-20 max-w-[50%]'>
             <h3>INFO</h3>
-            <p className='mt-5'>
-              {intro &&
-                intro.map((content) => (
-                  <ContentIntro key={content.id} content={content} />
-                ))}
-            </p>
+            <p className='mt-5'>{content.description}</p>
           </div>
         </div>
         <div className='flex flex-row'>
           <div className='m-20 max-w-[50%]'>
             <h3>INFO</h3>
-            <div className='mt-5'></div>
+            <p className='mt-5'>{content.operating_time}</p>
+            <p className='mt-5'>{content.address}</p>
+            <p className='mt-5'>{content.email}</p>
           </div>
           <img
             className='m-20 max-w-[50%]'
