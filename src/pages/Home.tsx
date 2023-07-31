@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom"
-import MapComp from "../components/MapComp"
+import { Link } from "react-router-dom";
+import MapComp from "../components/MapComp";
 
 interface IMenu {
-  href: string
-  text: string
-  imgSrc: string
-  customClassname?: string
+  href: string;
+  text: string;
+  imgSrc: string;
+  customClassname?: string;
 }
 
 const menu: IMenu[] = [
@@ -27,22 +27,36 @@ const menu: IMenu[] = [
     imgSrc: "/img/product.png",
     customClassname: "left-[10%]",
   },
-]
+];
 
 const Home = () => {
   return (
-    <div>
-      <header>
-        <img src='/img/banner.png' alt='banner' />
-      </header>
-      <main>
-        <div className='flex flex-row'>
-          <div className='m-20 w-[50%] h-[500px]'>
+    <>
+      <div
+        className="h-screen"
+        data-aos="fade-up"
+        data-aos-offset={100}
+        data-aos-duration="1500"
+      >
+        <img
+          className="object-cover w-full h-full"
+          src="/img/banner.png"
+          alt="banner"
+        />
+      </div>
+      <main className="h-auto">
+        <div
+          className="flex flex-row h-screen"
+          data-aos="fade-up"
+          data-aos-offset={200}
+          data-aos-duration="1500"
+        >
+          <div className="m-20 w-[50%] h-[500px]">
             <MapComp />
           </div>
-          <div className='m-20 w-[50%]'>
+          <div className="m-20 w-[50%]">
             <h3>INFO</h3>
-            <p className='mt-5'>
+            <p className="mt-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Laboriosam reprehenderit quisquam doloribus repellendus fugit
               sapiente esse necessitatibus, nihil voluptate quod aspernatur quos
@@ -51,18 +65,30 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <div className='flex flex-row m-20 justify-between'>
+        <div
+          className="flex flex-row m-20 justify-between h-screen"
+          data-aos="fade-up"
+          data-aos-offset={400}
+          data-aos-duration="1500"
+        >
           {menu.map(({ href, imgSrc, text, customClassname }) => (
-            <div key={imgSrc} className='relative'>
-              <Link to={href}>
-                <img src={imgSrc} alt='bar' />
+            <div key={imgSrc} className="h-[350px] w-[350px]">
+              <Link
+                className="relative w-full h-full flex justify-center items-center"
+                to={href}
+              >
                 <p
-                  className={`absolute text-6xl font-extralight text-white top-[45%] ${
+                  className={`text-6xl font-extralight text-white ${
                     customClassname ?? ""
                   }`}
                 >
                   {text}
                 </p>
+                <img
+                  src={imgSrc}
+                  className="absolute top-0 left-0 -z-10"
+                  alt="bar"
+                />
               </Link>
             </div>
           ))}
@@ -71,8 +97,8 @@ const Home = () => {
       <footer>
         <p>FOOTER</p>
       </footer>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default Home
+export default Home;
