@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import MapComp from "../components/MapComp";
+import { motion } from "framer-motion";
 
 interface IMenu {
   href: string;
@@ -92,8 +93,9 @@ const Home = () => {
               </Link>
             </div>
           ))}
-        </div>
+          </div> 
       </main>
+
       <footer>
         <p>FOOTER</p>
       </footer>
