@@ -8,7 +8,7 @@ import Create from "./pages/Create";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Content from "./pages/Content";
-import { AnimatePresence } from "framer-motion";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -20,17 +20,18 @@ function App() {
   return (
     <>
       <Navbar />
-      <AnimatePresence mode="wait">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/content/:id" element={<Info />} />
-          <Route path="/content" element={<Content />} />
-          <Route path="/map" element={<Map />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/user/login" element={<Login />} />
-          <Route path="/user/register" element={<Register />} />
-        </Routes>
-      </AnimatePresence>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/content/:id" element={<Info />} />
+        <Route path="/content" element={<Content />} />
+        <Route path="/map" element={<Map />} />
+        <Route path="/create" element={<Create />} />
+
+        <Route path="/user/login" element={<Login />} />
+
+        <Route path="/user/register" element={<Register />} />
+      </Routes>
     </>
   );
 }
