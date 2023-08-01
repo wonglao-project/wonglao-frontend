@@ -89,14 +89,21 @@ const Info = () => {
                 quos sint optio, consequuntur quia dignissimos aperiam nostrum
                 veritatis?
               </p>
-              <Link to={`/content/${id}/product/create`}>
-                <button type='submit'>create product</button>
-              </Link>
             </div>
           </div>
         </div>
+        <div className='flex flex-col items-center m-20'>
+          <Link to={`/content/${id}/product/create`}>
+            <button
+              type='submit'
+              className='bg-gray-200 p-1 rounded-lg text-white hover:bg-[#797979] text-lg mt-2'
+            >
+              CREATE PRODUCT
+            </button>
+          </Link>
+          <SellerProductList />
+        </div>
       </main>
-      <SellerProductList />
     </div>
   )
 }

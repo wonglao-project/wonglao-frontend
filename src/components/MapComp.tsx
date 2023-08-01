@@ -35,13 +35,10 @@ const MapComp = ({
         (content) => content.id === Number(filterBySeller)
       )
     } else if (contentList && filterMode === "sellerCategory") {
-      if (filterBySellerCategory === "ALL") {
-        return contentList
-      }
-
-      return contentList.filter(
-        (content) => content.category === filterBySellerCategory
-      )
+      return contentList
+      // .filter(
+      //   (content) => content.category === filterBySellerCategory
+      // )
     } else if (contentList && filterMode === "none") {
       return contentList
     }

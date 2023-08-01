@@ -8,11 +8,10 @@ const Navbar = () => {
 
   return (
     <nav className='sticky bg-opacity-30 backdrop-blur-lg backdrop-filter shadow-lg'>
-      <div className='flex justify-between h-16 items-center px-12'>
+      <div className='flex justify-between h-16 items-center pr-12 pl-5'>
         <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
-          <Link to={"/"} className='flex flex-row'>
-            {/* <p className="font-sans">WONGLAO</p> */}
-            <img src='public/img/wl-6.svg' alt='wonglao' className='h-32' />
+          <Link to={"/"}>
+            <img src='public/img/logo.svg' alt='wonglao' className='h-32' />
           </Link>
         </motion.button>
 
