@@ -7,7 +7,7 @@ const Navbar = () => {
   const { isLoggedIn, logout } = useAuth();
 
   return (
-    <nav className="sticky bg-opacity-30 backdrop-blur-lg backdrop-filter">
+    <nav className="sticky bg-opacity-30 backdrop-blur-lg backdrop-filter shadow-lg">
       <div className="flex justify-between h-16 items-center px-12">
         <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
           <Link to={"/"}>

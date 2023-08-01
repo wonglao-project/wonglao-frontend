@@ -83,7 +83,7 @@ const Home = () => {
           </div>
         </div>
         <div
-          className="flex flex-row m-20 justify-between h-90"
+          className="flex flex-row m-20 justify-between h-90 "
           data-aos="fade-up"
           data-aos-offset={100}
           data-aos-duration="800"
