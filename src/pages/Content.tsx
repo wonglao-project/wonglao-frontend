@@ -44,9 +44,7 @@ const Content = () => {
       </ul>
       <div className="flex flex-row mx-20 justify-between">
         <div className="flex flex-col">
-          <p className="pb-3 px-20 pt-20 border-b border-[#797979]/40">
-            Filter
-          </p>
+          <p className="pb-3 px-20 pt-5 border-b border-[#797979]/40">Filter</p>
           <ul className="py-5 px-20">
             <li>Gin</li>
             <li>Rum</li>
