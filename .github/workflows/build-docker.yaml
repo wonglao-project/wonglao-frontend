@@ -29,6 +29,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
+        env:
+          VITE_BE_URL: https://api.wonglaoat.cleverse.academy
         with:
           push: true
           file: ./Dockerfile
