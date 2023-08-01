@@ -6,12 +6,16 @@ WORKDIR /app
 COPY . .
 
 ARG API_KEY
+ARG BE_URL
 
 RUN npm install -g pnpm
 RUN pnpm install
 
-ENV VITE_BE_URL="https://api.wonglaoat.cleverse.academy"
+ENV VITE_BE_URL="bad-url"
 ENV VITE_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${API_KEY:-"my-api-key"}
+
+RUN export VITE_BE_URL=${BE_URL}
+RUN export VITE_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${API_KEY}
 
 RUN pnpm build
 
