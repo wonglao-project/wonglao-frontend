@@ -15,7 +15,7 @@ type MapOptions = google.maps.MapOptions
 interface IMapCompProps {
   filterMode: "sellerId" | "sellerCategory" | "none"
   filterBySeller?: string
-  filterBySellerCategory?: EnumSellerCategory
+  filterBySellerCategory?: EnumSellerCategory | "ALL"
 }
 
 const MapComp = ({

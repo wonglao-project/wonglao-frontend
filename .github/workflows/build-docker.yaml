@@ -35,8 +35,8 @@ jobs:
           push: true
           file: ./Dockerfile
           build-args: |
-            FROM_REPO=${{ github.repositoryUrl }}
-            APP_VERSION=${{ github.ref_name }}
+            API_KEY=${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
+            BE_URL="https://api.wonglaoat.cleverse.academy"
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/wonglao-frontend:${{ github.ref_name }}
             ${{ secrets.DOCKERHUB_USERNAME }}/wonglao-frontend:latest

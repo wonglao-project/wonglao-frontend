@@ -7,8 +7,14 @@ COPY . .
 
 RUN npm install -g pnpm
 RUN pnpm install
-ENV VITE_BE_URL="https://api.wonglaoat.cleverse.academy" 
-RUN pnpm build
+
+ARG API_KEY
+ARG BE_URL
+
+ENV VITE_BE_URL=${BE_URL}
+ENV VITE_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${API_KEY}
+
+RUN VITE_BE_URL=${VITE_BE_URL} VITE_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${API_KEY} pnpm build
 
 # Step 1: copy built React app into base NGINX image
 FROM nginx:latest
