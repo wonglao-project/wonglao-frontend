@@ -14,8 +14,6 @@ jobs:
   #       runs-on: ubuntu-latest
 
   docker:
-    # Only start this job after job `test` finished successfully
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checking out ${{ github.ref }} ${{ github.sha }}
