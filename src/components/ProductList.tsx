@@ -37,15 +37,14 @@ const ProductList = () => {
     return <p className='text-center text-red-500'>{error}</p>
   }
 
-  console.log(productList)
-
   return (
-    <div className="<div className='flex flex-col mx-20 justify-between'>">
+    <div className="flex gap-4 mx-20 justify-between">
       <div className='flex flex-col w-1/5'>
-        <p className='pb-3 px-20 pt-20 border-b border-[#797979]/40'>Filter</p>
-        <List className='py-5 px-20'>
+        <p className='pb-3 pt-20 text-center border-b border-[#797979]/40'>Filter</p>
+        <List>
           <ListItem
             onClick={() => setSelectedProductCategory(EnumProductCategory.GIN)}
+            selected
             className='py-3 my-2 hover:bg-gray-200 hover:text-white focus:bg-gray-200 focus:text-white'
           >
             Gin
