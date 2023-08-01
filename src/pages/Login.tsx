@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../providers/AuthProvider";
 import { FormEvent, useState } from "react";
-import transition from "../transition";
 
 const Login = () => {
   const { login } = useAuth();
@@ -55,4 +54,4 @@ const Login = () => {
   );
 };
 
-export default transition(Login);
+export default Login;
