@@ -11,11 +11,7 @@ const ContentCard = ({ content }: ContentCardProps) => {
       to={`/content/${content.id}`}
       className='bg-gray-100 shadow-md overflow-hidden p-0'
     >
-      <div className=''>
-        {/* flex flex-col gap-4 justify-between h-full */}
-        {/* <p>{content.place_name}</p> */}
-        <img src={content.images[0]} />
-      </div>
+      <img src={content.images[0]} className='object-none object-center' />
     </Link>
   )
 }

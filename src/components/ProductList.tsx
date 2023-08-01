@@ -1,3 +1,4 @@
+import { List, ListItem } from "@material-tailwind/react"
 import { useEffect, useState } from "react"
 import useProductList from "../hooks/useProductList"
 import ProductCard from "./ProductCard"
@@ -39,22 +40,32 @@ const ProductList = () => {
   console.log(productList)
 
   return (
-    <div>
-      <ul>
-        <li onClick={() => setSelectedProductCategory(EnumProductCategory.GIN)}>
-          Gin
-        </li>
-        <li onClick={() => setSelectedProductCategory(EnumProductCategory.RUM)}>
-          Rum
-        </li>
-        <li
-          onClick={() =>
-            setSelectedProductCategory(EnumProductCategory.WHITE_SPIRIT)
-          }
-        >
-          White Spirit
-        </li>
-      </ul>
+    <div className="<div className='flex flex-col mx-20 justify-between'>">
+      <div className='flex flex-col w-1/5'>
+        <p className='pb-3 px-20 pt-20 border-b border-[#797979]/40'>Filter</p>
+        <List className='py-5 px-20'>
+          <ListItem
+            onClick={() => setSelectedProductCategory(EnumProductCategory.GIN)}
+            className='py-3 my-2 hover:bg-gray-200 hover:text-white focus:bg-gray-200 focus:text-white'
+          >
+            Gin
+          </ListItem>
+          <ListItem
+            onClick={() => setSelectedProductCategory(EnumProductCategory.RUM)}
+            className='py-3 my-2 hover:bg-gray-200 hover:text-white focus:bg-gray-200 focus:text-white'
+          >
+            Rum
+          </ListItem>
+          <ListItem
+            onClick={() =>
+              setSelectedProductCategory(EnumProductCategory.WHITE_SPIRIT)
+            }
+            className='py-3 my-2 hover:bg-gray-200 hover:text-white focus:bg-gray-200 focus:text-white'
+          >
+            White Spirit
+          </ListItem>
+        </List>
+      </div>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 items-stretch justify-stretch my-9 h-auto'>
         {currentProductList &&
           currentProductList.map((product) => (
