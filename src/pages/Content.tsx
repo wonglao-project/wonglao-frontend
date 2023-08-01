@@ -10,7 +10,7 @@ const Content = () => {
 
   return (
     <>
-      <ul className="flex flex-row mx-20 border-b border-[#797979]/40">
+      <ul className="flex flex-row mx-20 border-b border-[#797979]/40 shadow-lg">
         <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
           <li
             className="p-5 hover:cursor-pointer"
