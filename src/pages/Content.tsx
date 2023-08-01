@@ -4,6 +4,7 @@ import { EnumSellerCategory, SellerCategory } from "../types/types"
 import ProductList from "../components/ProductList"
 import { Link } from "react-router-dom"
 import { useAuth } from "../providers/AuthProvider"
+import { motion } from "framer-motion"
 
 const Content = () => {
   const { isLoggedIn } = useAuth()
@@ -15,24 +16,32 @@ const Content = () => {
     <>
       <div className='flex flex-row mx-20 border-b border-[#797979]/40 justify-between'>
         <ul className='flex flex-row'>
-          <li
-            className='p-5 hover:cursor-pointer'
-            onClick={() => setSelectedCategory(EnumSellerCategory.BREWER)}
-          >
-            BREWER
-          </li>
-          <li
-            className='p-5 hover:cursor-pointer'
-            onClick={() => setSelectedCategory(EnumSellerCategory.BAR)}
-          >
-            BAR
-          </li>
-          <li
-            className='p-5 hover:cursor-pointer'
-            onClick={() => setSelectedCategory(EnumSellerCategory.PRODUCT)}
-          >
-            PRODUCT
-          </li>
+          <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
+            <li
+              className='p-5 hover:cursor-pointer'
+              onClick={() => setSelectedCategory(EnumSellerCategory.BREWER)}
+            >
+              BREWER
+            </li>
+          </motion.button>
+
+          <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
+            <li
+              className='p-5 hover:cursor-pointer'
+              onClick={() => setSelectedCategory(EnumSellerCategory.BAR)}
+            >
+              BAR
+            </li>
+          </motion.button>
+
+          <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
+            <li
+              className='p-5 hover:cursor-pointer'
+              onClick={() => setSelectedCategory(EnumSellerCategory.PRODUCT)}
+            >
+              PRODUCT
+            </li>
+          </motion.button>
         </ul>
         <div className='flex items-center mx-5'>
           {isLoggedIn && (

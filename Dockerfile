@@ -1,16 +1,16 @@
-FROM node:current-alpine
-
+# Stage 0: build and compile the frontend
+# Out dist should be at /app/dist
+FROM node:current-alpine as build-stage
 WORKDIR /app
-
-COPY package.json package-lock.json ./
-
-RUN npm install -g pnpm && \
-  pnpm install
 
 COPY . .
 
-RUN pnpm build
+RUN npm install -g pnpm
+RUN pnpm install
+RUN VITE_BE_URL="https://api.wonglaoat.cleverse.academy" pnpm build
 
-CMD [ "pnpm", "run dev" ]
+# Step 1: copy built React app into base NGINX image
+FROM nginx:latest
 
-EXPOSE 8080
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build-stage /app/dist /usr/share/nginx/html
