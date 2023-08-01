@@ -63,7 +63,7 @@ export interface Product extends CreateProduct {
 export enum EnumProductCategory {
   GIN = "Gin",
   RUM = "Rum",
-  WHITE_SPIRIT = "White Spirit",
+  WHITE_SPIRIT = "WhiteSpirit",
 }
 
 export type ProductCategory = EnumProductCategory
