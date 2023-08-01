@@ -1,4 +1,5 @@
 import MapComp from "../components/MapComp"
+import { EnumSellerCategory } from "../types/types"
 
 const Map = () => {
   return (
@@ -7,7 +8,10 @@ const Map = () => {
         <h1>Places</h1>
       </div>
       <div className='w-[80%] h-[100vh]'>
-        <MapComp />
+        <MapComp
+          filterMode='sellerCategory'
+          filterBySellerCategory={EnumSellerCategory.BAR}
+        />
       </div>
     </div>
   )
