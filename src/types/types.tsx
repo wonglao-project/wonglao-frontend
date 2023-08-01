@@ -10,7 +10,7 @@ export interface ContentDto {
   tel: string
   email: string
   category: string
-  // images: string[];
+  images: string[]
 }
 
 export enum EnumSellerCategory {
@@ -39,3 +39,31 @@ export interface CreatePlaceDetails extends PlaceDetails {
   category: EnumSellerCategory.BAR | EnumSellerCategory.BREWER
   images: string[]
 }
+
+export interface ProductDto {
+  id: number
+  product_name: string
+  product_category: EnumProductCategory
+  description: string
+  images: string[]
+  sellerId: number
+}
+
+export interface CreateProduct {
+  product_name: string
+  product_category: EnumProductCategory
+  description: string
+  images: string[]
+  sellerId: number
+}
+export interface Product extends CreateProduct {
+  id: number
+}
+
+export enum EnumProductCategory {
+  GIN = "Gin",
+  RUM = "Rum",
+  WHITE_SPIRIT = "White Spirit",
+}
+
+export type ProductCategory = EnumProductCategory

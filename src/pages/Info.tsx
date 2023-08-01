@@ -1,5 +1,6 @@
+import SellerProductList from "../components/SellerProductList"
 import useContent from "../hooks/useContent"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 const Info = () => {
   const { id } = useParams()
@@ -59,9 +60,13 @@ const Info = () => {
               sint optio, consequuntur quia dignissimos aperiam nostrum
               veritatis?
             </p>
+            <Link to={`/content/${id}/product/create`}>
+              <button type='submit'>create product</button>
+            </Link>
           </div>
         </div>
       </main>
+      <SellerProductList />
     </div>
   )
 }
