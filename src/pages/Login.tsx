@@ -26,12 +26,17 @@ const Login = () => {
         onSubmit={handleSubmit}
         className="flex flex-col items-left w-2/6 mt-10"
       >
-        <span className="font-bold text-2xl mb-2">Welcome Back!</span>
+        <span className="font-bold text-2xl mb-2 text-center">
+          ALREADY REGISTERED?
+        </span>
+        <span className="font-bold text-base mb-2 text-center">
+          If you have an account with us, please log in :)
+        </span>
         <br />
 
         <div className="relative z-0 mb-6 w-full group mt-5">
           <input
-            className="block py-2 w-full px-0 border-0 text-lg text-grey-900 bg-transparent border-b-2 border-gray-300 appearance-none dark:text-grey-600 dark:border-grey-600 dark:focus:-border-grey-800 focus:outline-none focus:ring-0 focus:boder-grey-600 peer"
+            className="leading-10 block py-2 w-full px-0 border-0 text-lg text-black bg-transparent border-b-2 border-gray-300 appearance-none dark:text-grey-600 dark:border-grey-600 dark:focus:-border-grey-800 focus:outline-none focus:ring-0 focus:boder-grey-600 peer"
             placeholder=" "
             type="text"
             name="floating_name"
@@ -46,7 +51,7 @@ const Login = () => {
 
         <div className="relative z-0 mb-6 w-full group mt-5">
           <input
-            className="block py-2 w-full px-0 border-0 text-xl text-grey-900 bg-transparent border-b-2 border-gray-300 appearance-none dark:text-grey-600 dark:border-grey-600 dark:focus:-border-grey-800 focus:outline-none focus:ring-0 focus:boder-grey-600 peer"
+            className="leading-10 block py-2 w-full px-0 border-0 text-xl text-black bg-transparent border-b-2 border-gray-300 appearance-none dark:text-grey-600 dark:border-grey-600 dark:focus:-border-grey-800 focus:outline-none focus:ring-0 focus:boder-grey-600 peer"
             placeholder=" "
             type="password"
             id="floating_name"
