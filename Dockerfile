@@ -7,7 +7,8 @@ COPY . .
 
 RUN npm install -g pnpm
 RUN pnpm install
-RUN VITE_BE_URL="https://api.wonglaoat.cleverse.academy" pnpm build
+ENV VITE_BE_URL="https://api.wonglaoat.cleverse.academy" 
+RUN pnpm build
 
 # Step 1: copy built React app into base NGINX image
 FROM nginx:latest
