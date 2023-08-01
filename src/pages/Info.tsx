@@ -1,5 +1,6 @@
+import SellerProductList from "../components/SellerProductList";
 import useContent from "../hooks/useContent";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Info = () => {
   const { id } = useParams();
@@ -93,6 +94,7 @@ const Info = () => {
           </div>
         </div>
       </main>
+      <SellerProductList />
     </div>
   );
 };

@@ -2,6 +2,9 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import usePlaceDetails from "../hooks/usePlaceDetail"
 import { WebApiService } from "../services/WebApi"
 import { CreatePlaceDetails, EnumSellerCategory } from "../types/types"
+import { storage } from "../services/Firebase"
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
+import { v4 } from "uuid"
 
 const Create = () => {
   const { fetchData, placeDetails, setPlaceDetails } = usePlaceDetails()
@@ -15,6 +18,7 @@ const Create = () => {
   >(EnumSellerCategory.BAR)
   const [email, setEmail] = useState<string>("")
   const [tel, setTel] = useState<string>("")
+  const [files, setFiles] = useState<FileList | null>(null)
 
   const handleSubmitPlaceName = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -31,10 +35,35 @@ const Create = () => {
     }
   }
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFiles(e.target.files)
+  }
+
   const handleCreatePlaceWithDetailsSubmitted = async (
     event: FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault()
+
+    if (!files) {
+      return
+    }
+
+    //submitImages//
+    const arrayOfFiles = [...files]
+    const urlImages: string[] = []
+    console.log(arrayOfFiles)
+
+    for (let i = 0; i < arrayOfFiles.length; i++) {
+      const v4uuid = v4()
+      const imageRef = ref(storage, `images/${arrayOfFiles[i].name}${v4uuid}`)
+
+      await uploadBytes(imageRef, arrayOfFiles[i])
+      const url = await getDownloadURL(imageRef)
+      urlImages.push(url)
+      console.log(url)
+    }
+    console.log(`upload success!`)
+    console.log(urlImages)
 
     const api = new WebApiService()
     const details: CreatePlaceDetails = {
@@ -48,7 +77,7 @@ const Create = () => {
       email: email,
       tel: tel,
       // TODO: put images url here
-      images: ["mock-url-1", "mock-url-1"],
+      images: urlImages,
     }
 
     console.log("details", details)
@@ -89,13 +118,13 @@ const Create = () => {
         />
 
         <div className='flex justify-center'>
-          <button
+          <input
             className='bg-gray-200 p-1 rounded-lg text-white hover:bg-[#797979] text-lg mt-2'
             type='submit'
             disabled={isSubmitPlaceName}
           >
             Send
-          </button>
+          </input>
         </div>
       </form>
 
@@ -222,6 +251,27 @@ const Create = () => {
           onChange={(e) => setDescription(e.target.value)}
           required
         />
+
+        <label className='text-[#797979] text-md mb-5 mt-10'>IMAGES</label>
+        <input
+          className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]'
+          onChange={handleFileChange}
+          type='file'
+          accept='image/*'
+          multiple={true}
+          required
+        />
+        {files &&
+          [...files].map((file, index) => (
+            <section key={file.name}>
+              File number {index + 1} details:
+              <ul>
+                <li>Name: {file.name}</li>
+                <li>Type: {file.type}</li>
+                <li>Size: {file.size}</li>
+              </ul>
+            </section>
+          ))}
 
         <input type='submit' value='Create' />
       </form>
