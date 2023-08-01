@@ -6,11 +6,13 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div>
+    <div className=''>
       <img src={product.images[0]} />
-      <p>{product.product_name}</p>
-      <p>{product.description}</p>
-      <p>{product.product_category}</p>
+      <div>
+        <p>{product.product_name}</p>
+        <p>{product.description}</p>
+        <p>{product.product_category}</p>
+      </div>
     </div>
   )
 }
