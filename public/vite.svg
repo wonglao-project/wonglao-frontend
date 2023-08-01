@@ -6,11 +6,11 @@
         stroke: #fff;
         stroke-linecap: round;
         stroke-linejoin: round;
-        stroke-width: 20px;
+        stroke-width: 50px;
       }
     </style>
   </defs>
-  <rect class="cls-1" x="391.88" y="351.56" width="315.46" height="393.38"/>
+  <rect class="cls-1" x="291.88" y="151.56" width="715.46" height="793.38"/>
   <path class="cls-1" d="m391.88,430.12s210.95,65.99,315.46,65.99"/>
   <path class="cls-1" d="m707.34,496.11s80.45-25.99,83.12,39.56c2.67,65.55-.5,110.91-83.12,102.93"/>
   <line class="cls-1" x1="449.16" y1="639.51" x2="449.16" y2="512.72"/>

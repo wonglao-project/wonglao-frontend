@@ -5,8 +5,10 @@ import { CreatePlaceDetails, EnumSellerCategory } from "../types/types"
 import { storage } from "../services/Firebase"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { v4 } from "uuid"
+import { useNavigate } from "react-router-dom"
 
 const Create = () => {
+  const navigate = useNavigate()
   const { fetchData, placeDetails, setPlaceDetails } = usePlaceDetails()
 
   const [isSubmitPlaceName, setSubmitPlaceName] = useState<boolean>(false)
@@ -83,6 +85,8 @@ const Create = () => {
     console.log("details", details)
 
     await api.createPlaceWithDetails(details)
+
+    navigate(`/content`)
   }
 
   const handleChangeWeekdayText = (
@@ -254,7 +258,7 @@ const Create = () => {
 
         <label className='text-[#797979] text-md mb-5 mt-10'>IMAGES</label>
         <input
-          className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]'
+          className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979] '
           onChange={handleFileChange}
           type='file'
           accept='image/*'
@@ -264,16 +268,19 @@ const Create = () => {
         {files &&
           [...files].map((file, index) => (
             <section key={file.name}>
-              File number {index + 1} details:
+              {/* File number {index + 1} details: */}
               <ul>
-                <li>Name: {file.name}</li>
-                <li>Type: {file.type}</li>
-                <li>Size: {file.size}</li>
+                {/* <li>Name: {file.name}</li> */}
+                {/* <li>Type: {file.type}</li> */}
+                {/* <li>Size: {file.size}</li> */}
               </ul>
             </section>
           ))}
-
-        <input type='submit' value='Create' />
+        <div className='flex justify-center mt-9'>
+          <div className='bg-gray-200 p-1 rounded-lg text-white hover:bg-[#797979] text-lg mt-2'>
+            <input type='submit' value='Create' />
+          </div>
+        </div>
       </form>
     </div>
   )

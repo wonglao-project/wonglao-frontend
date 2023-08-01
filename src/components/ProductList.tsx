@@ -38,9 +38,11 @@ const ProductList = () => {
   }
 
   return (
-    <div className="flex gap-4 mx-20 justify-between">
+    <div className='flex gap-4 mx-20 '>
       <div className='flex flex-col w-1/5'>
-        <p className='pb-3 pt-20 text-center border-b border-[#797979]/40'>Filter</p>
+        <p className='pb-3 pt-20 text-center border-b border-[#797979]/40'>
+          Filter
+        </p>
         <List>
           <ListItem
             onClick={() => setSelectedProductCategory(EnumProductCategory.GIN)}
@@ -65,7 +67,7 @@ const ProductList = () => {
           </ListItem>
         </List>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 items-stretch justify-stretch my-9 h-auto'>
+      <div className='flex flex-row md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 items-stretch justify-stretch my-9 h-auto'>
         {currentProductList &&
           currentProductList.map((product) => (
             <ProductCard key={product.id} product={product} />
