@@ -28,23 +28,34 @@ const Login = () => {
       >
         <span className="font-bold text-2xl mb-2">Welcome Back!</span>
         <br />
-        <div>
-          <label className="text-[#797979] text-md mb-2 mt-10">Username</label>
+
+        <div className="relative z-0 mb-6 w-full group mt-5">
           <input
-            className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]"
+            className="block py-2 w-full px-0 border-0 text-lg text-grey-900 bg-transparent border-b-2 border-gray-300 appearance-none dark:text-grey-600 dark:border-grey-600 dark:focus:-border-grey-800 focus:outline-none focus:ring-0 focus:boder-grey-600 peer"
+            placeholder=" "
             type="text"
+            name="floating_name"
+            id="floating_name"
             onChange={(e) => setUsernameInput(e.target.value)}
             required
           />
+          <label className="peer-focus:font-medium absolute text-xl text-grey-500 dark:text-grey-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-grey-600 peer-focus:dark:text-grey-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            Username
+          </label>
         </div>
-        <div>
-          <label className="text-[#797979] text-md mb-2 mt-10">Password</label>
+
+        <div className="relative z-0 mb-6 w-full group mt-5">
           <input
-            className="mt-0 mb-10 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]"
+            className="block py-2 w-full px-0 border-0 text-xl text-grey-900 bg-transparent border-b-2 border-gray-300 appearance-none dark:text-grey-600 dark:border-grey-600 dark:focus:-border-grey-800 focus:outline-none focus:ring-0 focus:boder-grey-600 peer"
+            placeholder=" "
             type="password"
+            id="floating_name"
             onChange={(e) => setPasswordInput(e.target.value)}
             required
           />
+          <label className="peer-focus:font-medium absolute text-xl text-grey-500 dark:text-grey-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-grey-600 peer-focus:dark:text-grey-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            Password
+          </label>
         </div>
         <button className="bg-gray-200 p-3 rounded-lg text-white hover:bg-[#797979]">
           Sign in
