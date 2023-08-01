@@ -11,6 +11,7 @@ import Content from "./pages/Content"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import CreateProduct from "./pages/CreateProduct"
+import { AnimatePresence } from "framer-motion"
 
 function App() {
   useEffect(() => {
@@ -20,16 +21,21 @@ function App() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/content' element={<Content />} />
-        <Route path='/content/:id' element={<Info />} />
-        <Route path='/content/:id/product/create' element={<CreateProduct />} />
-        <Route path='/map' element={<Map />} />
-        <Route path='/create' element={<Create />} />
-        <Route path='/user/login' element={<Login />} />
-        <Route path='/user/register' element={<Register />} />
-      </Routes>
+      <AnimatePresence mode='wait'>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/content' element={<Content />} />
+          <Route path='/content/:id' element={<Info />} />
+          <Route
+            path='/content/:id/product/create'
+            element={<CreateProduct />}
+          />
+          <Route path='/map' element={<Map />} />
+          <Route path='/create' element={<Create />} />
+          <Route path='/user/login' element={<Login />} />
+          <Route path='/user/register' element={<Register />} />
+        </Routes>
+      </AnimatePresence>
     </>
   )
 }
