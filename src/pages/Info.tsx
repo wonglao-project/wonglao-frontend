@@ -15,7 +15,7 @@ const Info = () => {
         className="h-screen"
         data-aos="fade-up"
         data-aos-offset={100}
-        data-aos-duration="1500"
+        data-aos-duration="1000"
       >
         <header className="relative">
           <img src="/img/info-banner.png" alt="info-banner" />
@@ -27,7 +27,7 @@ const Info = () => {
         </header>
       </div>
 
-      <main className="mt-52">
+      <main>
         <div
           className="h-screen"
           data-aos="fade-right"
@@ -36,11 +36,11 @@ const Info = () => {
         >
           <div className="flex flex-row">
             <img
-              className="m-20 max-w-[50%]"
+              className="m-10 max-w-[50%]"
               src="/img/info-product-1.png"
               alt="info-product-1"
             />
-            <div className="m-20 max-w-[50%]">
+            <div className="m-10 max-w-[50%]">
               <h3>INFO</h3>
               <p className="mt-5">{content.description}</p>
             </div>

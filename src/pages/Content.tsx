@@ -10,10 +10,10 @@ const Content = () => {
 
   return (
     <>
-      <ul className="flex flex-row mx-20 border-b border-[#797979]/40 shadow-lg">
+      <ul className="flex flex-row mx-20 border-b border-[#797979]/40 font-semi ">
         <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
           <li
-            className="p-5 hover:cursor-pointer"
+            className="p-5 hover:cursor-pointer hover:underline offset-16"
             onClick={() => setSelectedCategory(EnumSellerCategory.BAR)}
           >
             BAR
@@ -22,7 +22,7 @@ const Content = () => {
 
         <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
           <li
-            className="p-5 hover:cursor-pointer"
+            className="p-5 hover:cursor-pointer hover:underline offset-16"
             onClick={() => setSelectedCategory(EnumSellerCategory.BREWER)}
           >
             BREWER
@@ -31,7 +31,7 @@ const Content = () => {
 
         <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
           <li
-            className="p-5 hover:cursor-pointer"
+            className="p-5 hover:cursor-pointer hover:underline offset-16"
             onClick={() => setSelectedCategory(EnumSellerCategory.PRODUCT)}
           >
             PRODUCT
