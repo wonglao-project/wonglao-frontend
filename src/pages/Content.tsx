@@ -1,8 +1,12 @@
 import { useState } from "react"
 import ContentList from "../components/ContentList"
 import { EnumSellerCategory, SellerCategory } from "../types/types"
+import ProductList from "../components/ProductList"
+import { Link } from "react-router-dom"
+import { useAuth } from "../providers/AuthProvider"
 
 const Content = () => {
+  const { isLoggedIn } = useAuth()
   const [selectedCategory, setSelectedCategory] = useState<SellerCategory>(
     EnumSellerCategory.BREWER
   )
@@ -35,23 +39,28 @@ const Content = () => {
             Filter
           </p>
           <ul className='py-5 px-20'>
-            <li>Beer</li>
             <li>Gin</li>
-            <li>Wine</li>
+            <li>Rum</li>
+            <li>White Spirit</li>
           </ul>
         </div>
-        <div className='grid grid-cols-3 gap-32 p-20'>
-          <img src='/img/list-product.png' alt='product list' />
-          <img src='/img/list-product.png' alt='product list' />
-          <img src='/img/list-product.png' alt='product list' />
+        <div className=''>
+          {/* grid grid-cols-3 gap-32 p-20 */}
+          {selectedCategory === EnumSellerCategory.PRODUCT ? (
+            <ProductList />
+          ) : (
+            <ContentList selectedCategory={selectedCategory} />
+          )}
         </div>
+        {isLoggedIn && (
+          <Link
+            to={"/create"}
+            className='bg-gray-200 p-3 rounded-lg text-white hover:bg-[#797979] text-lg'
+          >
+            Create New Content
+          </Link>
+        )}
       </div>
-      {selectedCategory === EnumSellerCategory.PRODUCT ? (
-        // TODO: Change to Product component
-        <ContentList selectedCategory={selectedCategory} />
-      ) : (
-        <ContentList selectedCategory={selectedCategory} />
-      )}
     </>
   )
 }
