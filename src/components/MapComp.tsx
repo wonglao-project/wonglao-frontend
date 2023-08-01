@@ -7,21 +7,47 @@ import {
 } from "@react-google-maps/api"
 import useContentList from "../hooks/useContentList"
 import { markerAdapter } from "../utils/markerAdapter"
+import { EnumSellerCategory } from "../types/types"
 
 type LatLngLiteral = google.maps.LatLngLiteral
 type MapOptions = google.maps.MapOptions
 
-const MapComp = () => {
+interface IMapCompProps {
+  filterMode: "sellerId" | "sellerCategory" | "none"
+  filterBySeller?: string
+  filterBySellerCategory?: EnumSellerCategory
+}
+
+const MapComp = ({
+  filterMode,
+  filterBySeller,
+  filterBySellerCategory,
+}: IMapCompProps) => {
   const { contentList } = useContentList()
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
   })
   const [activeMarker, setActiveMarker] = useState<number | null>(null)
-  const markers = useMemo(() => {
-    if (contentList) {
-      return markerAdapter(contentList)
+
+  const filteredContentList = useMemo(() => {
+    if (contentList && filterMode === "sellerId") {
+      return contentList.filter(
+        (content) => content.id === Number(filterBySeller)
+      )
+    } else if (contentList && filterMode === "sellerCategory") {
+      return contentList.filter(
+        (content) => content.category === filterBySellerCategory
+      )
+    } else if (contentList && filterMode === "none") {
+      return contentList
     }
   }, [contentList])
+
+  const markers = useMemo(() => {
+    if (filteredContentList) {
+      return markerAdapter(filteredContentList)
+    }
+  }, [filteredContentList])
 
   const mapRef = useRef<google.maps.Map>()
   const center = useMemo<LatLngLiteral>(

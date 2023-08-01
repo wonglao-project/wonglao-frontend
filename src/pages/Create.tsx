@@ -118,13 +118,13 @@ const Create = () => {
         />
 
         <div className='flex justify-center'>
-          <input
+          <button
             className='bg-gray-200 p-1 rounded-lg text-white hover:bg-[#797979] text-lg mt-2'
             type='submit'
             disabled={isSubmitPlaceName}
           >
             Send
-          </input>
+          </button>
         </div>
       </form>
 
