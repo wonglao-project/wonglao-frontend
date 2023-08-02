@@ -1,16 +1,8 @@
-import { useState } from "react"
-import MapComp from "../components/MapComp"
-
-import { EnumSellerCategory, SellerCategory } from "../types/types"
-import { List, ListItem, Card } from "@material-tailwind/react"
+import MapComp from "../components/MapComp";
 
 const Map = () => {
-  const [filterBySellerCategory, setfilterBySellerCategory] = useState<
-    SellerCategory | "ALL"
-  >("ALL")
-
   return (
-    <div className='flex h-[100vh]'>
+    <div className="flex h-[100vh]">
       {/* <div className='w-[20%] p-[1rem] bg-[#f6f6fc]'>
         <Card className='w-50'>
           <List>
@@ -32,16 +24,10 @@ const Map = () => {
         </Card>
       </div> */}
       {/* <div className='w-[80%] h-[100vh]'> */}
-      <MapComp
-        filterMode='sellerCategory'
-        filterBySellerCategory={
-          EnumSellerCategory.BAR && EnumSellerCategory.BREWER
-        }
-      />
-
+      <MapComp filterMode="sellerCategory" />
     </div>
     // </div>
-  )
-}
+  );
+};
 
-export default Map
+export default Map;
