@@ -15,7 +15,7 @@ const Content = () => {
   return (
     <>
       <div className="flex flex-row mx-20 border-b border-[#797979]/40 justify-between">
-        <ul className="flex flex-row justify-center">
+        <ul className="flex flex-row">
           <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
             <li
               className="p-5 hover:cursor-pointer hover:underline"
