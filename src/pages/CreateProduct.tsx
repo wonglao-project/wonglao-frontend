@@ -1,52 +1,52 @@
-import React, { useState, FormEvent } from "react"
-import { host } from "../constant/host"
-import { useNavigate, useParams } from "react-router-dom"
-import { storage } from "../services/Firebase"
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
-import { v4 } from "uuid"
-import { EnumProductCategory } from "../types/types"
+import React, { useState, FormEvent } from "react";
+import { host } from "../constant/host";
+import { useNavigate, useParams } from "react-router-dom";
+import { storage } from "../services/Firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
+import { EnumProductCategory } from "../types/types";
 
 const CreateProduct = () => {
-  const { id } = useParams()
-  const navigate = useNavigate()
-  const [productName, setProductName] = useState<string>("")
-  const [description, setDescription] = useState<string>("")
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [productName, setProductName] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [productCategory, setProductCategory] = useState<EnumProductCategory>(
     EnumProductCategory.GIN
-  )
-  const [files, setFiles] = useState<FileList | null>(null)
+  );
+  const [files, setFiles] = useState<FileList | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFiles(e.target.files)
-  }
+    setFiles(e.target.files);
+  };
 
   const handleCreateProductSubmitted = async (
     event: FormEvent<HTMLFormElement>
   ) => {
-    event.preventDefault()
-    const token = localStorage.getItem("token")
+    event.preventDefault();
+    const token = localStorage.getItem("token");
 
     //submitImages//
 
     if (!files) {
-      return
+      return;
     }
 
-    const arrayOfFiles = [...files]
-    const urlImages: string[] = []
-    console.log(arrayOfFiles)
+    const arrayOfFiles = [...files];
+    const urlImages: string[] = [];
+    console.log(arrayOfFiles);
 
     for (let i = 0; i < arrayOfFiles.length; i++) {
-      const v4uuid = v4()
-      const imageRef = ref(storage, `images/${arrayOfFiles[i].name}${v4uuid}`)
+      const v4uuid = v4();
+      const imageRef = ref(storage, `images/${arrayOfFiles[i].name}${v4uuid}`);
 
-      await uploadBytes(imageRef, arrayOfFiles[i])
-      const url = await getDownloadURL(imageRef)
-      urlImages.push(url)
-      console.log(url)
+      await uploadBytes(imageRef, arrayOfFiles[i]);
+      const url = await getDownloadURL(imageRef);
+      urlImages.push(url);
+      console.log(url);
     }
-    console.log(`upload success!`)
-    console.log(urlImages)
+    console.log(`upload success!`);
+    console.log(urlImages);
 
     try {
       await fetch(`${host}/product`, {
@@ -62,36 +62,36 @@ const CreateProduct = () => {
           sellerId: id,
           product_category: productCategory,
         }),
-      })
+      });
 
-      navigate(`/content/${id}`)
+      navigate(`/content/${id}`);
     } catch (err: any) {
-      console.log(err.message)
+      console.log(err.message);
     }
-  }
+  };
 
   return (
-    <div className='flex flex-col items-center'>
+    <div className="flex flex-col items-center">
       <form
-        className='flex flex-col items-left w-2/6 mt-7'
+        className="flex flex-col items-left w-2/6 mt-7"
         onSubmit={handleCreateProductSubmitted}
       >
-        <label className='text-[#797979] text-md mb-5 mt-10'>
+        <label className="text-[#797979] text-md mb-5 mt-10">
           Product Name
         </label>
         <input
-          className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]'
-          type='text'
+          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]"
+          type="text"
           value={productName}
           onChange={(e) => setProductName(e.target.value)}
           required
         />
 
-        <label className='text-[#797979] text-md mb-5 mt-10'>
+        <label className="text-[#797979] text-md mb-5 mt-10">
           Product Category
         </label>
         <select
-          className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]'
+          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]"
           value={productCategory}
           onChange={(e) =>
             setProductCategory(e.target.value as EnumProductCategory)
@@ -103,25 +103,25 @@ const CreateProduct = () => {
           <option value={EnumProductCategory.WHITE_SPIRIT}>White Spirit</option>
         </select>
 
-        <label className='text-[#797979] text-md mb-5 mt-10'>Description</label>
+        <label className="text-[#797979] text-md mb-5 mt-10">Description</label>
         <textarea
-          className='mt-0 mb-10 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]'
+          className="mt-0 mb-10 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
         />
 
-        <label className='text-[#797979] text-md mb-5 mt-10'>IMAGES</label>
+        <label className="text-[#797979] text-md mb-5 mt-10">IMAGES</label>
         <input
-          className='mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]'
+          className="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 bg-[#F6F6FC] focus:ring-0 focus:border-[#797979]"
           onChange={handleFileChange}
-          type='file'
-          accept='image/*'
+          type="file"
+          accept="image/*"
           multiple={true}
           required
         />
         {files &&
-          [...files].map((file, index) => (
+          [...files].map((file) => (
             <section key={file.name}>
               {/* File number {index + 1} details: */}
               <ul>
@@ -131,14 +131,14 @@ const CreateProduct = () => {
               </ul>
             </section>
           ))}
-        <div className='flex justify-center mt-9'>
-          <div className='bg-gray-200 p-1 rounded-lg text-white hover:bg-[#797979] text-lg mt-2'>
-            <input type='submit' value='Create' />
+        <div className="flex justify-center mt-9">
+          <div className="bg-gray-200 p-1 rounded-lg text-white hover:bg-[#797979] text-lg mt-2">
+            <input type="submit" value="Create" />
           </div>
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default CreateProduct
+export default CreateProduct;
