@@ -33,11 +33,10 @@ const Navbar = () => {
                 </div>
               </motion.button>
 
-              {/* <MenuItem>
+              {/*               
                     <Link to={"/user/register"}>
                       <p>Register</p>
-                    </Link>
-                  </MenuItem> */}
+                    </Link> */}
             </>
           )}
 
