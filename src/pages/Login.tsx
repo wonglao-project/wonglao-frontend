@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../providers/AuthProvider";
 import { FormEvent, useState } from "react";
 
@@ -71,6 +71,18 @@ const Login = () => {
           <button className="bg-gray-200 p-3 rounded-lg text-white hover:bg-[#797979]">
             Sign in
           </button>
+
+          <div className="pt-4 text-center">
+            <p>
+              New to WongLao?{"  "}
+              <Link
+                to={"/user/register"}
+                className="text-lime-400  hover:cursor-pointer hover:underline"
+              >
+                Sign up now
+              </Link>
+            </p>
+          </div>
         </form>
       </div>
     </div>
