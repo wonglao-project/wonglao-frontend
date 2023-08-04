@@ -1,48 +1,52 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../providers/AuthProvider";
-import { Map } from "lucide-react";
+import { Map, UserCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
   const { isLoggedIn, logout } = useAuth();
 
   return (
-    <nav className="sticky bg-opacity-30 backdrop-blur-lg backdrop-filter shadow-lg">
-      <div className="flex justify-between h-16 items-center pr-12 pl-5">
+    <nav className="fixed bg-opacity-60 bg-white shadow-lg w-full top-0 z-40">
+      <div className="flex justify-between h-16 items-center pr-8">
         <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
           <Link to={"/"}>
             <img src="/img/logo.svg" alt="wonglao" className="h-32" />
           </Link>
         </motion.button>
 
-        <div className="flex gap-8">
+        <div className="flex gap-3">
           {isLoggedIn ? (
             <button onClick={logout}>Log out</button>
           ) : (
             <>
-              <Link to={"/user/login"}>
-                <motion.button
-                  whileHover={{
-                    scale: 1.3,
-                    color: "#303234",
-                  }}
-                >
-                  <p>Login</p>
-                </motion.button>
-              </Link>
-
-              <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
-                <Link to={"/user/register"}>
-                  <p>Register</p>
-                </Link>
+              <motion.button
+                whileHover={{
+                  scale: 1.3,
+                  color: "#303234",
+                }}
+              >
+                <div className="pt-1 px-3">
+                  <Link to={"/user/login"}>
+                    <UserCircle2 size="26" />
+                  </Link>
+                </div>
               </motion.button>
+
+              {/* <MenuItem>
+                    <Link to={"/user/register"}>
+                      <p>Register</p>
+                    </Link>
+                  </MenuItem> */}
             </>
           )}
 
           <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
-            <Link to={"/map"}>
-              <Map />
-            </Link>
+            <div className="pt-1">
+              <Link to={"/map"}>
+                <Map size="26" />
+              </Link>
+            </div>
           </motion.button>
         </div>
       </div>
