@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../providers/AuthProvider";
-import { Map, UserCircle2 } from "lucide-react";
+import { Map, LogIn, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
@@ -17,9 +17,22 @@ const Navbar = () => {
 
         <div className="flex gap-3">
           {isLoggedIn ? (
-            <button onClick={logout}>Log out</button>
+            <motion.button
+              whileHover={{ scale: 1.3, color: "#303234" }}
+              onClick={logout}
+            >
+              <LogOut size="26" />
+            </motion.button>
           ) : (
             <>
+              <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
+                <div className="pt-1">
+                  <Link to={"/map"}>
+                    <Map size="26" />
+                  </Link>
+                </div>
+              </motion.button>
+
               <motion.button
                 whileHover={{
                   scale: 1.3,
@@ -28,25 +41,12 @@ const Navbar = () => {
               >
                 <div className="pt-1 px-3">
                   <Link to={"/user/login"}>
-                    <UserCircle2 size="26" />
+                    <LogIn size="26" />
                   </Link>
                 </div>
               </motion.button>
-
-              {/*               
-                    <Link to={"/user/register"}>
-                      <p>Register</p>
-                    </Link> */}
             </>
           )}
-
-          <motion.button whileHover={{ scale: 1.3, color: "#303234" }}>
-            <div className="pt-1">
-              <Link to={"/map"}>
-                <Map size="26" />
-              </Link>
-            </div>
-          </motion.button>
         </div>
       </div>
     </nav>
